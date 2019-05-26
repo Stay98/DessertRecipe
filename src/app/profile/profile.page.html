@@ -6,4 +6,29 @@
 
 <ion-content>
 
+  <ion-item>
+    <ion-label position="floating">Enter Your Name :</ion-label>
+    <ion-input type="text" [(ngModel)]="Name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Enter Your Username :</ion-label>
+    <ion-input type="text" [(ngModel)]="Uzername"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Choose Your Gender</ion-label>
+    <ion-select placeholder="Select One">
+      <ion-select-option value="Gender" [(ngModel)]="Gender">Female</ion-select-option>
+      <ion-select-option value="Gender" [(ngModel)]="Gender">Male</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Enter Your Birth Date</ion-label>
+    <ion-datetime display-format="DD-MM-YYYY" picker-format="DD-MM-YYYY" [(ngModel)]="BirthDate"></ion-datetime>
+  </ion-item>
+
+  <ion-button fill="solid" expand="block" color="dark" (click)="setValues()">Done!</ion-button>
+
 </ion-content>

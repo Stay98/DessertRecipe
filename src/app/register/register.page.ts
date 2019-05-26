@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth'
 import { auth } from 'firebase/app'
 import { AlertController } from '@ionic/angular'
 import { Router } from '@angular/router'
+import { AngularFirestore } from '@angular/fire/firestore'
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +18,8 @@ export class RegisterPage implements OnInit {
   cpassword: string = ""
   constructor(
     public afAuth: AngularFireAuth,
+    public afStore: AngularFirestore,
+    public user:UserService,
     public alert: AlertController,
     public router: Router
     ) { }
@@ -30,13 +34,25 @@ export class RegisterPage implements OnInit {
         return console.error("Passwords don't match")
     }
     try {
+
       const res = await this.afAuth.auth.createUserWithEmailAndPassword(username, password)
       console.log(res)
       this.showAlert("Success !","Enjoy The Recipes!")
-      this.router.navigate(['/login'])
+      this.user.setUser({
+        username,
+        user_id: res.user.uid
+      })
+      this.router.navigate(['./profile'])
+
+      this.afStore.doc(`users/${res.user.uid}`).set({
+        username
+      })
+
     } catch(err) {
+
       console.dir(err)
       this.showAlert("Error !",err.message)
+
     }
   }
 
