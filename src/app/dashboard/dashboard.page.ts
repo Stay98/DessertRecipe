@@ -4,6 +4,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { AlertController } from '@ionic/angular'
 import { Router } from '@angular/router'
+import { firestore } from 'firebase/app';
+import { AngularFireAuth } from '@angular/fire/auth'
 
 @Component({
   selector: 'app-dashboard',
@@ -13,24 +15,42 @@ import { Router } from '@angular/router'
 export class DashboardPage implements OnInit {
 
   imageURL: string
+  Name: string = ""
+  Uzername: string = ""
+  newBirth: string = ""
+  Gender: string = ""
+
   constructor(
     public http: Http,
     public afStore: AngularFirestore,
     public alert: AlertController,
     public user: UserService,
-    public router: Router
+    public router: Router,
+    private afAuth: AngularFireAuth,
     ) { }
 
   ngOnInit() {
   }
 
-  addPicture() {
+  setValues() {
+    const {Uzername, Name, newBirth, Gender} = this
     const image = this.imageURL
+    const user = this.afAuth.auth.currentUser
+    const email = user.email
 
-    this.afStore.doc(`users/${this.user.getUserID()}`).update({
-      image
+    const BirthDate = newBirth.split('T')[0]
+
+    this.afStore.doc(`users/${this.user.getUserID()}`).set({
+      userinfos: firestore.FieldValue.arrayUnion({
+        Name,
+        Uzername,
+        BirthDate,
+        Gender,
+        image,
+        email
+      })
     })
-    this.showAlert('Congratulations!',"Your Image is Uploaded Succesfully")
+    this.showAlert('Congratulations!',"Your Profile Has Created Succesfully (:")
     this.router.navigate(['./tabs'])
   }
   

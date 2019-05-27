@@ -9,11 +9,34 @@
   <div class="camera"></div>
 
   <input type="file" *ngIf="!imageURL" (change)="fileChanged($event)"/>
+
   <ion-card>
       <img *ngIf="imageURL" src="https://ucarecdn.com/{{ imageURL }}/" />
-      <ion-card-content>
-          <ion-button shape="round" color="primary" (click)="addPicture()">Add Picture</ion-button>
-      </ion-card-content>
   </ion-card>
+
+      <ion-item>
+        <ion-label position="floating">Enter Your Name :</ion-label>
+        <ion-input type="text" [(ngModel)]="Name"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="floating">Enter Your Username :</ion-label>
+        <ion-input type="text" [(ngModel)]="Uzername"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Choose Your Gender</ion-label>
+        <ion-select placeholder="Select One">
+          <ion-select-option value="f" [(ngModel)]="Gender">Female</ion-select-option>
+          <ion-select-option value="m" [(ngModel)]="Gender">Male</ion-select-option>
+        </ion-select>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Enter Your Birth Date</ion-label>
+        <ion-datetime display-format="DD-MM-YYYY" picker-format="DD-MM-YYYY" [(ngModel)]="newBirth"></ion-datetime>
+      </ion-item>
+    
+      <ion-button fill="solid" expand="block" color="dark" (click)="setValues()">Done!</ion-button>
 
 </ion-content>

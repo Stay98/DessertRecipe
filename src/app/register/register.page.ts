@@ -42,7 +42,7 @@ export class RegisterPage implements OnInit {
         username,
         user_id: res.user.uid
       })
-      this.router.navigate(['./profile'])
+      this.router.navigate(['./dashboard'])
 
       this.afStore.doc(`users/${res.user.uid}`).set({
         username

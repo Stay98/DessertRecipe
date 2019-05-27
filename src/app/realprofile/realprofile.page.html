@@ -4,6 +4,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+
+    <div id="images">
+      <div class="image" *ngFor="let info of (userinfo | async)?.userinfos">
+          <ion-card>
+              <ion-img src="https://ucarecdn.com/{{ info.image }}/-/scale_crop/300x300/center/"></ion-img>
+          </ion-card>
+       
+         <ion-content>
+           <p> Your Name : {{ info.Name }} </p>
+           <p> Gender : {{ info.Gender }} </p>
+           <p> Your Username : {{ info.Uzername }} </p>
+           <p> Your Birth Date : {{ info.BirthDate }} </p>
+           <p> Your E-Mail : {{ info.email }} </p>
+         </ion-content>
+      </div>
+    </div>
+
 
 </ion-content>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore'
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-realprofile',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RealprofilePage implements OnInit {
 
-  constructor() { }
+  userinfo
+
+  constructor(private afs: AngularFirestore, private user: UserService) { 
+    const infos = afs.doc(`users/${user.getUserID()}`)
+    this.userinfo = infos.valueChanges()
+  }
 
   ngOnInit() {
   }
