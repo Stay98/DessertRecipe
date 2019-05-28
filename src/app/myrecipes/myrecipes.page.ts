@@ -4,27 +4,26 @@ import { UserService } from '../user.service';
 import { Router } from '@angular/router'
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.page.html',
-  styleUrls: ['./main.page.scss'],
+  selector: 'app-myrecipes',
+  templateUrl: './myrecipes.page.html',
+  styleUrls: ['./myrecipes.page.scss'],
 })
-export class MainPage implements OnInit {
+export class MyrecipesPage implements OnInit {
 
   userrecipe
-
-  constructor( 
+  
+  constructor(
     public router: Router,
     private afs: AngularFirestore, 
     private user: UserService
-    
   ) { 
-    const infos = afs.doc(`recipes/1`)
+    const infos = afs.doc(`recipes/${user.getUserID()}`)
     this.userrecipe = infos.valueChanges()
   }
 
   ngOnInit() {
   }
   rotate() {
-    this.router.navigate(['./addrecipe'])
+    this.router.navigate(['./tabs'])
   }
 }

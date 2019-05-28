@@ -48,6 +48,10 @@ export class RegisterPage implements OnInit {
         username
       })
 
+      this.afStore.doc(`recipes/${res.user.uid}`).set({
+        username
+      })
+
     } catch(err) {
 
       console.dir(err)

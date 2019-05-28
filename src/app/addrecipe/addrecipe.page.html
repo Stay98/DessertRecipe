@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-button (click)="rotate()" ion-button icon-only>
+          <ion-icon name="arrow-round-back"></ion-icon>
+      </ion-button>
+    <ion-title>Adding Recipe !</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="camera"></div>
+
+  <input type="file" *ngIf="!imageURL" (change)="fileChanged($event)"/>
+
+  <ion-card>
+      <img *ngIf="imageURL" src="https://ucarecdn.com/{{ imageURL }}/" />
+  </ion-card>
+
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="Ingredients">
+            <ion-textarea #myInput id="myInput" rows="1" maxLength="100" (keyup)="resize()" placeholder="Enter Your Ingredients here.."></ion-textarea>
+        </ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="RecipeDesc">
+            <ion-textarea #myInput id="myInput" rows="1" maxLength="500" (keyup)="resize()" placeholder="Enter Your Recipe here.."></ion-textarea>
+        </ion-input>
+      </ion-item>
+
+      <ion-button fill="solid" expand="block" color="dark" (click)="addRecipe()">Done!</ion-button>
+
+</ion-content>

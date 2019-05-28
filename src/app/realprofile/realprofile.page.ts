@@ -24,4 +24,8 @@ export class RealprofilePage implements OnInit {
     this.router.navigate(['./dashboard'])
   }
 
+  recipe() {
+    this.router.navigate(['./myrecipes'])
+  }
+
 }

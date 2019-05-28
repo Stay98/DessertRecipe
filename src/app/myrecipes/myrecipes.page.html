@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button (click)="rotate()" ion-button icon-only>
-      <ion-icon name="add-circle"></ion-icon>
-    </ion-button>
-    <ion-title>Recipes</ion-title>
+      <ion-button (click)="rotate()" ion-button icon-only>
+          <ion-icon name="arrow-round-back"></ion-icon>
+      </ion-button>
+    <ion-title>My Recipes</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,21 +11,16 @@
   <ion-card>
     <div id="recipes">
         <div class="recipe" *ngFor="let recipe of (userrecipe | async)?.dessertinfos">
-            <ion-label></ion-label>
-            <ion-label></ion-label>
-            <ion-item>
-                <textarea> Writer : {{ recipe.email }} </textarea>
-             </ion-item>
-
+            
             <ion-card>
                 <ion-img src="https://ucarecdn.com/{{ recipe.image }}/"></ion-img>
             </ion-card>
          
            <ion-list>
 
-             <ion-item>
+              <ion-item>
                   <textarea> RecipeIngredients : {{ recipe.Ingredients }} </textarea>
-             </ion-item>
+              </ion-item>
 
              <ion-item>
                 <textarea> RecipeDesc : {{ recipe.RecipeDesc }} </textarea>
@@ -35,4 +30,5 @@
         </div>
       </div>
   </ion-card>
+
 </ion-content>
