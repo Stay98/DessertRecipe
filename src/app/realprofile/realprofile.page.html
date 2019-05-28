@@ -4,23 +4,39 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
     <div id="images">
       <div class="image" *ngFor="let info of (userinfo | async)?.userinfos">
           <ion-card>
-              <ion-img src="https://ucarecdn.com/{{ info.image }}/-/scale_crop/300x300/center/"></ion-img>
+              <ion-img src="https://ucarecdn.com/{{ info.image }}/"></ion-img>
           </ion-card>
        
-         <ion-content>
-           <p> Your Name : {{ info.Name }} </p>
-           <p> Gender : {{ info.Gender }} </p>
-           <p> Your Username : {{ info.Uzername }} </p>
-           <p> Your Birth Date : {{ info.BirthDate }} </p>
-           <p> Your E-Mail : {{ info.email }} </p>
-         </ion-content>
+         <ion-list>
+           <ion-item>
+            <ion-label position="floating" text-wrap> Your Name : {{ info.Name }} </ion-label>
+           </ion-item>
+
+           <ion-item>
+              <ion-label position="floating" text-wrap> Gender : {{ info.Gender }} </ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating" text-wrap> Your Username : {{ info.Uzername }} </ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating" text-wrap> Your Birth Date : {{ info.BirthDate }} </ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating" text-wrap> Your E-Mail : {{ info.email }} </ion-label>
+            </ion-item>
+
+          </ion-list>
       </div>
     </div>
-
+    
+    <ion-button fill="solid" expand="block" color="dark" (click)="rotate()">Edit Profile</ion-button>
 
 </ion-content>
