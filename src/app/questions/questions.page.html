@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Questions</ion-title>
+    <ion-button (click)="rotate()" ion-button icon-only>
+        <ion-icon name="add-circle"></ion-icon>
+      </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="questions" *ngIf="(userquestion | async)?.Questioninfos as questions">
+    <div class="question" *ngFor="let question of questions">
+      <ion-card>
+
+
+        <ion-item>
+              <ion-label text-wrap> Writer : {{ question.asker }} </ion-label>
+           </ion-item>
+
+          <ion-card>
+              <ion-img src="https://ucarecdn.com/{{ question.image }}/"></ion-img>
+          </ion-card>
+
+           <ion-item>
+                <ion-label text-wrap> Question : {{ question.Question }} </ion-label>
+           </ion-item>
+
+           <ion-button fill="solid" expand="block" color="dark" (click)="addAnswers(question.image)">Answers</ion-button>
+
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

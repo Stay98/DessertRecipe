@@ -4,15 +4,19 @@
       <ion-icon name="add-circle"></ion-icon>
     </ion-button>
     <ion-title>Recipes</ion-title>
+    <ion-button (click)="rotate2()" ion-button icon-only>
+        <ion-icon name="airplane"></ion-icon>
+      </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <div id="recipes">
-      <div class="recipe" *ngFor="let recipe of (userrecipe | async)?.dessertinfos">
+    <div id="recipes" *ngIf="(userrecipe | async)?.dessertinfos as recipes">
+      <div class="recipe" *ngFor="let recipe of recipes">
         <ion-card>
-            <ion-item>
-                <ion-label text-wrap> Writer : {{ recipe.email }} </ion-label>
+            
+          <ion-item>
+                <ion-label text-wrap> Writer : {{ recipe.author }} </ion-label>
              </ion-item>
 
             <ion-card>
@@ -28,7 +32,8 @@
              <ion-item>
                 <ion-label text-wrap> RecipeDesc : {{ recipe.RecipeDesc }} </ion-label>
              </ion-item>
-  
+                      <ion-button fill="solid" expand="block" color="dark" (click)="addComment(recipe.image)">Comments</ion-button>
+             
             </ion-list>
         </ion-card>
       </div>

@@ -5,11 +5,14 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
-  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
   { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
   { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule' },
   { path: 'addrecipe', loadChildren: './addrecipe/addrecipe.module#AddrecipePageModule' },
   { path: 'myrecipes', loadChildren: './myrecipes/myrecipes.module#MyrecipesPageModule' },
+  { path: 'comments/:id', loadChildren: './comments/comments.module#CommentsPageModule' },
+  { path: 'addquestions', loadChildren: './addquestions/addquestions.module#AddquestionsPageModule' },
+  { path: 'answers/:id', loadChildren: './answers/answers.module#AnswersPageModule' },
+  { path: 'livechat', loadChildren: './livechat/livechat.module#LivechatPageModule' },
 ];
 
 @NgModule({

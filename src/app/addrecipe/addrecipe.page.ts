@@ -37,15 +37,28 @@ export class AddrecipePage implements OnInit {
     const image = this.imageURL
     const {Ingredients, RecipeDesc} = this
     const user = this.afAuth.auth.currentUser
-    const email = user.email
+    const author = user.email
 
 
-    this.afStore.doc(`recipes/${this.user.getUserID()}`).update({
+    this.afStore.doc(`users/${this.user.getUserID()}`).update({
+      dessertrecipes: firestore.FieldValue.arrayUnion(image)     
+    })
+
+    this.afStore.doc(`recipes/${image}`).set({
+      dessertinfos: firestore.FieldValue.arrayUnion({
+        Ingredients,
+        RecipeDesc,
+        imageid: image,
+        author,
+      })
+    })
+
+    this.afStore.doc(`users/${this.user.getUserID()}`).update({
       dessertinfos: firestore.FieldValue.arrayUnion({
         Ingredients,
         RecipeDesc,
         image,
-        email
+        author,
       })
     })
 
@@ -54,10 +67,9 @@ export class AddrecipePage implements OnInit {
         Ingredients,
         RecipeDesc,
         image,
-        email
+        author,
       })
     })
-
     this.showAlert('Congratulations!',"Your Recipe Has Created Succesfully (:")
     this.router.navigate(['./tabs'])
   }

@@ -9,9 +9,15 @@ interface user {
     user_id: string
 }
 
+interface recipe {
+    recipeid: string
+}
+
 @Injectable()
 export class UserService{
     private user: user
+    private recipe: recipe
+  const: any;
 
     constructor(
         private afAuth: AngularFireAuth,
@@ -31,6 +37,12 @@ export class UserService{
     setUser(user: user) {
         this.user = user
     }
+    setRecipe(recipe: recipe) {
+        this.recipe = recipe
+    }
+    getRecipe() {
+        return this.recipe.recipeid
+    }
 
     getUserID() {
         if(!this.user) {
@@ -44,7 +56,7 @@ export class UserService{
             }
             else {
                 this.showAlert("Error!","User not logged in!")
-                this.router.navigate(['./login'])
+                this.router.navigate(['../login'])
             }
         }
         else {

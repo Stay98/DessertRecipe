@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-button (click)="rotate()" ion-button icon-only>
+          <ion-icon name="arrow-round-back"></ion-icon>
+      </ion-button>
+    <ion-title>Answers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <div id="answers">
+            <div class="answer" *ngFor="let answer of (answerr | async)?.allanswers">
+                <ion-card>
+                  <ion-label text-wrap> {{answer.author}} : {{ answer.Answer }} </ion-label>
+                </ion-card>
+            </div>
+        </div>
+    </ion-card>
+
+          <ion-card>
+              <ion-item>
+                <ion-input type="text" [(ngModel)]="Answer">
+                    <ion-textarea rows="4" placeholder="Enter Your Answer Here.."></ion-textarea>
+                </ion-input>
+              </ion-item>
+
+              <ion-button fill="solid" expand="block" color="dark" (click)="addAnswerr()">Send Your Answer !</ion-button>
+
+          </ion-card>
+</ion-content>

@@ -52,6 +52,14 @@ export class RegisterPage implements OnInit {
         username
       })
 
+      this.afStore.doc(`questions/${res.user.uid}`).set({
+        username
+      })
+
+      this.afStore.doc(`livechat/${res.user.uid}`).set({
+        username
+      })
+
     } catch(err) {
 
       console.dir(err)

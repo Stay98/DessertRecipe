@@ -9,6 +9,7 @@ const routes: Routes = [
             children: [
                 { path: 'realprofile', loadChildren: '../realprofile/realprofile.module#RealprofilePageModule' },
                 { path: 'main', loadChildren: '../main/main.module#MainPageModule' },
+                { path: 'questions', loadChildren: '../questions/questions.module#QuestionsPageModule' },
             ]
         }
 

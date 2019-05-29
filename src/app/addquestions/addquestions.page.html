@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-button (click)="rotate()" ion-button icon-only>
+          <ion-icon name="arrow-round-back"></ion-icon>
+      </ion-button>
+    <ion-title>Your Question</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="camera"></div>
+
+    <input type="file" *ngIf="!imageURL" (change)="fileChanged($event)"/>
+  
+    <ion-card>
+        <img *ngIf="imageURL" src="https://ucarecdn.com/{{ imageURL }}/" />
+    </ion-card>
+    
+    <ion-item>
+        <ion-input type="text" [(ngModel)]="Question">
+            <ion-textarea rows="10" placeholder="Please Enter Your Question"></ion-textarea>
+        </ion-input>
+      </ion-item>
+
+      <ion-button fill="solid" expand="block" color="dark" (click)="addQuestion()">Done!</ion-button>
+</ion-content>

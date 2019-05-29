@@ -17,7 +17,7 @@ export class MyrecipesPage implements OnInit {
     private afs: AngularFirestore, 
     private user: UserService
   ) { 
-    const infos = afs.doc(`recipes/${user.getUserID()}`)
+    const infos = afs.doc(`users/${user.getUserID()}`)
     this.userrecipe = infos.valueChanges()
   }
 
