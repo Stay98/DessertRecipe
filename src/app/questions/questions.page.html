@@ -1,9 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Questions</ion-title>
-    <ion-button (click)="rotate()" ion-button icon-only>
-        <ion-icon name="add-circle"></ion-icon>
+      <ion-button color="dark" (click)="rotate()" ion-button icon-only><ion-icon name="add-circle"></ion-icon>
       </ion-button>
+      <div style="text-align:center">
+    <ion-title><b>QUESTIONS</b></ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +15,7 @@
 
 
         <ion-item>
-              <ion-label text-wrap> Writer : {{ question.asker }} </ion-label>
+              <ion-label text-wrap><b>Writer :</b> {{ question.asker }} </ion-label>
            </ion-item>
 
           <ion-card>
@@ -22,7 +23,7 @@
           </ion-card>
 
            <ion-item>
-                <ion-label text-wrap> Question : {{ question.Question }} </ion-label>
+                <ion-label text-wrap><b>Question :</b> {{ question.Question }} </ion-label>
            </ion-item>
 
            <ion-button fill="solid" expand="block" color="dark" (click)="addAnswers(question.image)">Answers</ion-button>

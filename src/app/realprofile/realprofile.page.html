@@ -1,6 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Your Profile</ion-title>
+      <div style="text-align:center">
+    <ion-title><b>Your Profile</b></ion-title>
+      </div>
   </ion-toolbar>
 </ion-header>
 
@@ -37,7 +39,7 @@
       </div>
     </div>
     
-    <ion-button fill="solid" expand="block" color="dark" (click)="rotate()">Edit Profile</ion-button>
-    <ion-button fill="solid" expand="block" color="dark" (click)="recipe()">Show My Recipes</ion-button>
+    <ion-button fill="solid" expand="block" color="dark" (click)="rotate()"><ion-icon name="create"></ion-icon>Edit Profile</ion-button>
+    <ion-button fill="solid" expand="block" color="dark" (click)="recipe()"><ion-icon name="albums"></ion-icon>Show My Recipes</ion-button>
 
 </ion-content>
