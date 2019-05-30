@@ -44,5 +44,7 @@ export class LivechatPage implements OnInit {
       })
     })
   }
-
+  rotate4(){
+    this.router.navigate(['./tabs'])
+  }
 }

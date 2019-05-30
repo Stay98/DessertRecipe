@@ -6,6 +6,7 @@ import { UserService } from '../user.service';
 import { AlertController } from '@ionic/angular'
 import { Router } from '@angular/router'
 import { AngularFireAuth } from '@angular/fire/auth'
+import { Services } from '@angular/core/src/view';
 
 @Component({
   selector: 'app-addrecipe',
@@ -17,6 +18,8 @@ export class AddrecipePage implements OnInit {
   imageURL: string
   RecipeDesc: string
   Ingredients: string
+  RecipeBakingTime:string
+  Services:string
   userinfo
 
 
@@ -35,7 +38,7 @@ export class AddrecipePage implements OnInit {
 
   addRecipe() {
     const image = this.imageURL
-    const {Ingredients, RecipeDesc} = this
+    const {Ingredients, RecipeDesc,RecipeBakingTime,Services} = this
     const user = this.afAuth.auth.currentUser
     const author = user.email
 
@@ -48,6 +51,8 @@ export class AddrecipePage implements OnInit {
       dessertinfos: firestore.FieldValue.arrayUnion({
         Ingredients,
         RecipeDesc,
+        RecipeBakingTime,
+        Services,
         imageid: image,
         author,
       })
@@ -57,6 +62,8 @@ export class AddrecipePage implements OnInit {
       dessertinfos: firestore.FieldValue.arrayUnion({
         Ingredients,
         RecipeDesc,
+        RecipeBakingTime,
+        Services,
         image,
         author,
       })
@@ -66,6 +73,8 @@ export class AddrecipePage implements OnInit {
       dessertinfos: firestore.FieldValue.arrayUnion({
         Ingredients,
         RecipeDesc,
+        RecipeBakingTime,
+        Services,
         image,
         author,
       })

@@ -1,16 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button (click)="rotate()" ion-button icon-only>
+    <ion-button  size="small" color="pink" (click)="rotate()" ion-button icon-only>
       <ion-icon name="add-circle"></ion-icon>
     </ion-button>
-    <ion-title>Recipes</ion-title>
-    <ion-button (click)="rotate2()" ion-button icon-only>
-        <ion-icon name="airplane"></ion-icon>
+
+    <div style="text-align:center">
+    <ion-title><ion-text color="danger"><b>MAIN</b></ion-text></ion-title>
+  </div>
+    <ion-button size="small" color="pink" (click)="rotate2()" ion-button icon-only small float-right round>Live Chat
+        <ion-icon name="chatbubbles"></ion-icon>
       </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  
     <div id="recipes" *ngIf="(userrecipe | async)?.dessertinfos as recipes">
       <div class="recipe" *ngFor="let recipe of recipes">
         <ion-card>
@@ -25,14 +29,23 @@
          
            <ion-list>
 
+
+            <ion-item>
+              <ion-badge color="primary" > <ion-label > Recipe Baking Time : {{ recipe.RecipeBakingTime }}</ion-label></ion-badge >
+            </ion-item>
+
+            <ion-item>
+              <ion-badge color="tertiary"> <ion-label > Services : {{ recipe.Services}}</ion-label></ion-badge >
+            </ion-item>
+
              <ion-item>
-                  <ion-label text-wrap> RecipeIngredients : {{ recipe.Ingredients }} </ion-label>
+                  <ion-label text-wrap><b>Ingredients :</b> {{ recipe.Ingredients }} </ion-label>
              </ion-item>
 
              <ion-item>
-                <ion-label text-wrap> RecipeDesc : {{ recipe.RecipeDesc }} </ion-label>
+                <ion-label text-wrap><b>Description :</b> {{ recipe.RecipeDesc }} </ion-label>
              </ion-item>
-                      <ion-button fill="solid" expand="block" color="dark" (click)="addComment(recipe.image)">Comments</ion-button>
+                      <ion-button fill="solid" expand="block" color="pink" (click)="addComment(recipe.image)"> <ion-icon ios="ios-chatboxes" md="md-chatboxes"></ion-icon>Comments</ion-button>
              
             </ion-list>
         </ion-card>

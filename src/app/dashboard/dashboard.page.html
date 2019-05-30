@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Editing Page</ion-title>
+    <ion-title>Edit Your Profile Page</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -25,11 +25,8 @@
       </ion-item>
     
       <ion-item>
-        <ion-label>Choose Your Gender</ion-label>
-        <ion-select placeholder="Select One">
-          <ion-select-option value="f" [(ngModel)]="Gender">Female</ion-select-option>
-          <ion-select-option value="m" [(ngModel)]="Gender">Male</ion-select-option>
-        </ion-select>
+        <ion-label text-wrap position="floating">Enter Your Gender( We respect everything (: ) :</ion-label>
+        <ion-input type="text" [(ngModel)]="Gender"></ion-input>
       </ion-item>
     
       <ion-item>

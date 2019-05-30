@@ -16,15 +16,26 @@
       <img *ngIf="imageURL" src="https://ucarecdn.com/{{ imageURL }}/" />
   </ion-card>
 
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="RecipeBakingTime">
+        <ion-textarea #myInput id="myInput" rows="1" maxLength="20" (keyup)="resize()" placeholder="Enter Your Recipe Baking Time here.."></ion-textarea>
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="Services">
+        <ion-textarea #myInput id="myInput" rows="1" maxLength="20" (keyup)="resize()" placeholder="How many people are you going to serve.."></ion-textarea>
+    </ion-input>
+  </ion-item>
+
       <ion-item>
         <ion-input type="text" [(ngModel)]="Ingredients">
-            <ion-textarea #myInput id="myInput" rows="1" maxLength="100" (keyup)="resize()" placeholder="Enter Your Ingredients here.."></ion-textarea>
+            <ion-textarea #myInput id="myInput" rows="1" maxLength="950" (keyup)="resize()" placeholder="Enter Your Ingredients here.."></ion-textarea>
         </ion-input>
       </ion-item>
     
       <ion-item>
         <ion-input type="text" [(ngModel)]="RecipeDesc">
-            <ion-textarea #myInput id="myInput" rows="1" maxLength="500" (keyup)="resize()" placeholder="Enter Your Recipe here.."></ion-textarea>
+            <ion-textarea #myInput id="myInput" rows="1" maxLength="3000" (keyup)="resize()" placeholder="Enter Your Recipe here.."></ion-textarea>
         </ion-input>
       </ion-item>
 

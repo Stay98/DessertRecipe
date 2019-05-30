@@ -1,19 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>livechat</ion-title>
+      <ion-button (click)="rotate4()" ion-button icon-only>
+          <ion-icon name="arrow-round-back"></ion-icon>
+      </ion-button>
+    <ion-title>Live Chat</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-card>
+   
         <div id="answers">
-            <div class="answer" *ngFor="let chatter of (chatt | async)?.allchats">
-                <ion-card>
+            <div class="answer" *ngFor="let chatter of (chatt | async)?.allchats" class="clr">
+                
                   <ion-label text-wrap> {{chatter.author}} : {{ chatter.Message }} </ion-label>
-                </ion-card>
+                  
+                
             </div>
         </div>
-    </ion-card>
+    
 
           <ion-card>
               <ion-item>
