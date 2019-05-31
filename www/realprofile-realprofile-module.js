@@ -101,9 +101,9 @@ var RealprofilePage = /** @class */ (function () {
         this.userr = userr;
         this.router = router;
         this.afAuth = afAuth;
-        this.user = afAuth.auth.currentUser;
-        this.uid = this.user.uid;
-        var infos = afs.doc("users/" + this.uid);
+        /*this.user = afAuth.auth.currentUser
+        this.uid = this.user.uid*/
+        var infos = afs.doc("users/" + userr.getUserID());
         this.userinfo = infos.valueChanges();
     }
     RealprofilePage.prototype.ngOnInit = function () {

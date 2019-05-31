@@ -129,7 +129,7 @@ var RegisterPage = /** @class */ (function () {
                         res = _b.sent();
                         console.log(res);
                         this.showAlert("Success !", "Enjoy The Recipes!");
-                        this.router.navigate(['./login']);
+                        this.router.navigate(['./dashboard']);
                         this.afStore.doc("users/" + res.user.uid).set({
                             username: username
                         });

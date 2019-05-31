@@ -17,9 +17,9 @@ export class RealprofilePage implements OnInit {
   
 
   constructor(private afs: AngularFirestore, private userr: UserService,public router: Router,private afAuth: AngularFireAuth,) {
-    this.user = afAuth.auth.currentUser
-    this.uid = this.user.uid
-    const infos = afs.doc(`users/${this.uid}`)
+    /*this.user = afAuth.auth.currentUser
+    this.uid = this.user.uid*/
+    const infos = afs.doc(`users/${userr.getUserID()}`)
     this.userinfo = infos.valueChanges()
   }
 
