@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore'
 import { UserService } from '../user.service';
 import { Router } from '@angular/router'
+import { AngularFireAuth } from '@angular/fire/auth'
 
 @Component({
   selector: 'app-realprofile',
@@ -11,9 +12,14 @@ import { Router } from '@angular/router'
 export class RealprofilePage implements OnInit {
 
   userinfo
+  user
+  uid: string
+  
 
-  constructor(private afs: AngularFirestore, private user: UserService,public router: Router) { 
-    const infos = afs.doc(`users/${user.getUserID()}`)
+  constructor(private afs: AngularFirestore, private userr: UserService,public router: Router,private afAuth: AngularFireAuth,) {
+    this.user = afAuth.auth.currentUser
+    this.uid = this.user.uid
+    const infos = afs.doc(`users/${this.uid}`)
     this.userinfo = infos.valueChanges()
   }
 

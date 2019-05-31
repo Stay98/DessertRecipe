@@ -38,11 +38,7 @@ export class RegisterPage implements OnInit {
       const res = await this.afAuth.auth.createUserWithEmailAndPassword(username, password)
       console.log(res)
       this.showAlert("Success !","Enjoy The Recipes!")
-      this.user.setUser({
-        username,
-        user_id: res.user.uid
-      })
-      this.router.navigate(['./dashboard'])
+      this.router.navigate(['./login'])
 
       this.afStore.doc(`users/${res.user.uid}`).set({
         username

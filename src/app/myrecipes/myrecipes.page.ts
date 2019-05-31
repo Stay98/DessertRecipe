@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore'
 import { UserService } from '../user.service';
 import { Router } from '@angular/router'
+import { AngularFireAuth } from '@angular/fire/auth'
 
 @Component({
   selector: 'app-myrecipes',
@@ -11,13 +12,18 @@ import { Router } from '@angular/router'
 export class MyrecipesPage implements OnInit {
 
   userrecipe
+  user
+  uid
   
   constructor(
     public router: Router,
     private afs: AngularFirestore, 
-    private user: UserService
+    private userr: UserService,
+    private afAuth: AngularFireAuth
   ) { 
-    const infos = afs.doc(`users/${user.getUserID()}`)
+    this.user = afAuth.auth.currentUser
+    this.uid = this.user.uid
+    const infos = afs.doc(`users/${this.uid}`)
     this.userrecipe = infos.valueChanges()
   }
 
